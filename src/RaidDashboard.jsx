@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import GeneralAssignments from "./GeneralAssignments";
 
 export default function RaidDashboard() {
   const [raidData, setRaidData] = useState([]);
@@ -21,11 +22,12 @@ export default function RaidDashboard() {
 
   return (
     <div className="min-h-screen bg-black text-white p-6">
+      {/* Header */}
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold text-center">AQ40 Raid Dashboard</h1>
+        <h1 className="text-3xl font-bold text-center w-full">AQ40 Raid Dashboard</h1>
         <button
           onClick={() => setShowImportBox(true)}
-          className="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded font-semibold"
+          className="absolute right-6 bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded font-semibold"
         >
           Import JSON
         </button>
@@ -60,7 +62,7 @@ export default function RaidDashboard() {
         </div>
       )}
 
-      {/* Party Groups Display */}
+      {/* Party Groups */}
       <div className="grid grid-cols-2 gap-6">
         <div className="space-y-4">
           {parties.slice(0, 4).map((group, idx) => (
@@ -72,6 +74,11 @@ export default function RaidDashboard() {
             <PartyGroup key={idx + 4} groupNumber={idx + 5} players={group} />
           ))}
         </div>
+      </div>
+
+      {/* General Assignments Section */}
+      <div className="mt-10 max-w-6xl mx-auto">
+        <GeneralAssignments />
       </div>
     </div>
   );
